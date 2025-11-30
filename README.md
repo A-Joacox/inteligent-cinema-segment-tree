@@ -15,7 +15,7 @@ El objetivo es demostrar la utilidad práctica de las estructuras de datos avanz
 3.  **Búsqueda Inteligente (Heurística)**: 
     - Algoritmo `findBestSeats` que encuentra automáticamente los *mejores* asientos disponibles, maximizando el puntaje de calidad acumulado.
 4.  **Benchmark Científico**: 
-    - Comparativa de rendimiento en tiempo real contra una Búsqueda Lineal ($O(N)$).
+    - Comparativa de rendimiento contra **Linear Search**, **Fenwick Tree** y **AVL Tree**.
 
 ## Compilación y Ejecución
 El proyecto está escrito en C++ moderno y modularizado.
@@ -27,20 +27,31 @@ El proyecto está escrito en C++ moderno y modularizado.
 Desde la carpeta del proyecto:
 
 ```bash
+cd IntelligentCinema
 g++ main.cpp CinemaRow.cpp CinemaSystem.cpp Benchmark.cpp -o cinema_app
 ./cinema_app
 ```
 
 ## Resultados del Benchmark
-El sistema incluye una herramienta de benchmarking (Opción 5 del menú) que compara el Segment Tree contra una implementación ingenua (Linear Search). (De ahí añado comparación con Fenwick Tree y AVL)
+El sistema incluye una herramienta de benchmarking (Opción 5 del menú) que compara 4 estructuras:
 
 **Resultados típicos (N=10,000 asientos):**
-- **Consultas (Queries)**: El Segment Tree es **~17,000x más rápido**.
-- **Actualizaciones (Updates)**: Rendimiento comparable, pero con mejor escalabilidad asintótica.
+- **Consultas (Queries)**: 
+    - Segment Tree: **0.015 us** (Extremadamente rápido)
+    - Linear Search: 250.11 us (~17,000x más lento)
+    - Fenwick Tree: 0.030 us (Muy rápido)
+    - AVL Tree: 0.096 us (Rápido)
+- **Actualizaciones (Updates)**: 
+    - Segment Tree: **149 us** (Eficiente para rangos)
+    - AVL Tree: 1270 us (Muy lento por rotaciones)
 
 ## Estructura del Código
-- `CinemaRow (.h/.cpp)`: Implementación del Segment Tree, Nodos y Lazy Propagation.
-- `CinemaSystem (.h/.cpp)`: Lógica de negocio, gestión de filas y estadísticas.
-- `Benchmark (.h/.cpp)`: Pruebas de rendimiento y métricas.
-- `LinearSearchRow.h`: Clase base para comparación en el benchmark.
-- `main.cpp`: Punto de entrada e interfaz de usuario (CLI).
+- `CinemaRow (.h/.cpp)`: Implementación del Segment Tree.
+- `FenwickRow.h`: Implementación del Fenwick Tree.
+- `AVLRow.h`: Implementación del AVL Tree.
+- `CinemaSystem (.h/.cpp)`: Lógica de negocio.
+- `Benchmark (.h/.cpp)`: Pruebas de rendimiento.
+- `main.cpp`: Punto de entrada.
+
+## Autor
+Proyecto realizado para el curso de AED.
