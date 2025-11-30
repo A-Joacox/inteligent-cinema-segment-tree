@@ -101,5 +101,8 @@ El sistema incluye una herramienta de benchmarking (Opción 5 del menú) que com
 - `Benchmark (.h/.cpp)`: Pruebas de rendimiento.
 - `main.cpp`: Punto de entrada.
 
-## Autor
-Proyecto realizado para el curso de AED.
+## Integrantes
+- **Joaquin Mercado**
+- **Mathias Castro**
+
+Proyecto realizado para el curso de Algoritmos y Estructuras de Datos (AED).

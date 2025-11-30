@@ -17,12 +17,12 @@ using namespace std;
 
 // Estructura del Nodo
 struct SeatNode {
-    int total_free;
-    int max_consecutive;
-    int prefix_free;
-    int suffix_free;
-    int length;
-    int lazy;
+    int total_free;        // Total de asientos libres en el rango
+    int max_consecutive;   // Máximo de asientos libres consecutivos en el rango
+    int prefix_free;       // Asientos libres DESDE EL INICIO del rango
+    int suffix_free;       // Asientos libres HASTA EL FINAL del rango
+    int length;            // Longitud del rango
+    int lazy;              // Lazy propagation para updates
     
     SeatNode();
     SeatNode(bool is_free, int len = 1);

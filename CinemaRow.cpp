@@ -2,8 +2,7 @@
 #include <cmath>
 
 // Implementación de SeatNode
-SeatNode::SeatNode() : total_free(0), max_consecutive(0), 
-             prefix_free(0), suffix_free(0), length(0), lazy(0) {}
+SeatNode::SeatNode() : total_free(0), max_consecutive(0), prefix_free(0), suffix_free(0), length(0), lazy(0) {}
 
 SeatNode::SeatNode(bool is_free, int len) {
     length = len;
@@ -104,8 +103,7 @@ SeatNode CinemaRow::query(int node, int start, int end, int l, int r) {
     if (r <= mid) return query(2*node, start, mid, l, r);
     if (l > mid) return query(2*node+1, mid+1, end, l, r);
     
-    return merge(query(2*node, start, mid, l, r),
-                query(2*node+1, mid+1, end, l, r));
+    return merge(query(2*node, start, mid, l, r), query(2*node+1, mid+1, end, l, r));
 }
 
 CinemaRow::CinemaRow(int size) : n(size) {
