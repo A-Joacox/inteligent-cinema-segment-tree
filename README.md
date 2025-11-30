@@ -17,6 +17,54 @@ El objetivo es demostrar la utilidad práctica de las estructuras de datos avanz
 4.  **Benchmark Científico**: 
     - Comparativa de rendimiento contra **Linear Search**, **Fenwick Tree** y **AVL Tree**.
 
+## Complejidad Algorítmica
+
+Análisis de complejidad temporal para las operaciones principales de cada estructura de datos:
+
+| Estructura | Construcción | Query (Rango) | Update (Punto) | Update (Rango) | Espacio |
+|------------|--------------|---------------|----------------|----------------|---------|
+| **Segment Tree** | $O(N)$ | $O(\log N)$ | $O(\log N)$ | $O(\log N)$ con Lazy | $O(4N)$ |
+| **AVL Tree** | $O(N \log N)$ | $O(\log N + K)$* | $O(\log N)$ | $O(K \log N)$** | $O(N)$ |
+| **Fenwick Tree** | $O(N \log N)$ | $O(\log N)$ | $O(\log N)$ | No soportado | $O(N)$ |
+| **Linear Search** | $O(N)$ | $O(N)$ | $O(1)$ | $O(N)$ | $O(N)$ |
+
+**Notas:**
+- *K = tamaño del rango consultado
+- **Requiere K operaciones individuales de inserción/eliminación con rotaciones
+
+### Detalles por Estructura
+
+#### 1. Segment Tree (con Lazy Propagation)
+- **Construcción**: $O(N)$ - Construye el árbol bottom-up
+- **Query**: $O(\log N)$ - Divide el rango recursivamente
+- **Update Punto**: $O(\log N)$ - Actualiza desde hoja hasta raíz
+- **Update Rango**: $O(\log N)$ - Lazy propagation evita actualizar todos los nodos
+- **Ventaja**: Excelente para operaciones de rango con actualizaciones frecuentes
+
+#### 2. AVL Tree
+- **Construcción**: $O(N \log N)$ - Inserciones balanceadas una por una
+- **Query**: $O(\log N + K)$ - Búsqueda del inicio + recorrido in-order
+- **Update Punto**: $O(\log N)$ - Búsqueda + rotaciones para mantener balance
+- **Update Rango**: $O(K \log N)$ - Requiere K operaciones individuales
+- **Ventaja**: Mantiene elementos ordenados, útil para búsquedas por valor
+
+#### 3. Fenwick Tree (Binary Indexed Tree)
+- **Construcción**: $O(N \log N)$ - Actualizaciones incrementales
+- **Query**: $O(\log N)$ - Suma de prefijos mediante saltos binarios
+- **Update Punto**: $O(\log N)$ - Propaga cambios hacia arriba
+- **Update Rango**: No soportado directamente (requiere técnicas avanzadas)
+- **Ventaja**: Implementación simple y eficiente en memoria
+
+#### 4. Linear Search
+- **Construcción**: $O(N)$ - Copia directa del arreglo
+- **Query**: $O(N)$ - Recorre todo el rango secuencialmente
+- **Update Punto**: $O(1)$ - Acceso directo por índice
+- **Update Rango**: $O(N)$ - Actualiza cada elemento del rango
+- **Ventaja**: Simplicidad, no requiere estructuras auxiliares
+
+### Conclusión
+Para el caso de uso del sistema de cine (consultas y actualizaciones de rango frecuentes), **Segment Tree con Lazy Propagation** ofrece el mejor balance de rendimiento con complejidad $O(\log N)$ para todas las operaciones críticas.
+
 ## Compilación y Ejecución
 El proyecto está escrito en C++ moderno y modularizado.
 
