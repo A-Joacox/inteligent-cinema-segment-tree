@@ -1,0 +1,20 @@
+# Compiled Binaries
+*.exe
+*.dll
+*.so
+*.dylib
+*.out
+*.o
+*.obj
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# OS generated
+.DS_Store
+Thumbs.db
+
+# Test inputs
+*_input.txt
